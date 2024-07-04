@@ -26,21 +26,29 @@ namespace Ex04.Menus.Interfaces
                 .ToList();
         }
 
-        public virtual void Show()
+        public void PrintMenu()
         {
-            int userInput;
-            Console.WriteLine(Title);
-            Console.WriteLine("===============");
-            foreach (IMenuItem item in SubItems)
+            int userInput = -1;
+            while (userInput != 0)
             {
-                Console.WriteLine(String.Format("{0}. {1}", item.Index, item.Title));
+                Console.WriteLine(Title);
+                Console.WriteLine("===============");
+                foreach (IMenuItem item in SubItems)
+                {
+                    Console.WriteLine(String.Format("{0}. {1}", item.Index, item.Title));
+                }
+
+                Console.WriteLine(String.Format("Please enter your choice (1-{0} or 0 to exit)", SubItems.Count));
+                userInput = getUserInput();
+
+                stepInto(userInput);
             }
 
-            Console.WriteLine(String.Format("Please enter your choice (1-{0} or 0 to exit)", SubItems.Count));
-            userInput = getUserInput();
+        }
 
-            stepInto(userInput);
-
+        public void Select()
+        {
+           PrintMenu();
         }
 
         public SubMenuItem(string i_Title, int i_Index)
@@ -52,7 +60,7 @@ namespace Ex04.Menus.Interfaces
 
         protected void stepInto(int i_Index)
         {
-            (SubItems.Find(item => item.Index == i_Index) as ISubMenuItem).Show();
+            SubItems.Find(item => item.Index == i_Index).Select();
         }
 
         protected int getUserInput()
@@ -72,7 +80,7 @@ namespace Ex04.Menus.Interfaces
 
         protected bool isUserInputValid(int i_UserInput)
         {
-            return i_UserInput >= 0 && i_UserInput <= SubItems.Count;
+            return i_UserInput >= 0 && i_UserInput <= (SubItems.Count - 1);
         }
 
     }

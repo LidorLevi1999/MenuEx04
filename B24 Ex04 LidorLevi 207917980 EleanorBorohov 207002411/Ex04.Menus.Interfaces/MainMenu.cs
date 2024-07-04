@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Ex04.Menus.Interfaces
+﻿namespace Ex04.Menus.Interfaces
 {
     public class MainMenu : SubMenuItem
     {
         public int Index { get; private set; }
 
+        public bool isMenuRunning { get; set; }
+
         public MainMenu(string i_Title) : base(i_Title, 0)
         {
-            SubMenuItem exitItem = new SubMenuItem("Exit", 0);
-            AddSubMenuItem(exitItem);
+
         }
-
-        public override void Show()
+        public void Show()
         {
-            bool isMenuStillRunning = true;
-            int userInput;
+            isMenuRunning = true;
 
-
-            while(isMenuStillRunning)
+            while(isMenuRunning)
             {
-                base.Show();
+                base.Select();
             }
         }
     }

@@ -37,7 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="TestClass.cs" />
+    <Compile Include="TestInterfaces\TestCapitals.cs" />
+    <Compile Include="TestInterfaces\TestDate.cs" />
+    <Compile Include="TestInterfaces\TestExitMenu.cs" />
+    <Compile Include="TestInterfaces\TestTime.cs" />
+    <Compile Include="TestInterfaces\TestVersion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ex04.Menus.Events\Ex04.Menus.Events.csproj">

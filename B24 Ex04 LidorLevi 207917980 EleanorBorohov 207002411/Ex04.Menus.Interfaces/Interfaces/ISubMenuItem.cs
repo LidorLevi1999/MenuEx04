@@ -7,7 +7,7 @@ namespace Ex04.Menus.Interfaces
     {
         List<IMenuItem> SubItems { get; }
 
-        void Show();
+        void PrintMenu();
 
         void AddSubMenuItem(IMenuItem i_Item);
     }
