@@ -4,7 +4,6 @@
     {
         string Title { get; }
         int Index { get; }
-
         void Select();
 
     }

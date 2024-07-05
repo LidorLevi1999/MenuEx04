@@ -7,9 +7,7 @@ namespace Ex04.Menus.Interfaces
      public class SubMenuItem : ISubMenuItem
     {
         public List<IMenuItem> SubItems { get; private set; }
-
         public string Title { get; private set; }
-
         public int Index {  get; private set; }
 
         public void AddSubMenuItem(IMenuItem i_Item)
@@ -20,7 +18,6 @@ namespace Ex04.Menus.Interfaces
             }
 
             SubItems.Add(i_Item);
-
             SubItems = SubItems
                 .OrderBy(subItem => subItem.Index == 0 ? int.MaxValue : subItem.Index)
                 .ToList();
@@ -29,21 +26,20 @@ namespace Ex04.Menus.Interfaces
         public void PrintMenu()
         {
             int userInput = -1;
+
             while (userInput != 0)
             {
-                Console.WriteLine(Title);
-                Console.WriteLine("===============");
+                Console.WriteLine(String.Format("**{0}**", Title));
+                Console.WriteLine("========================");
                 foreach (IMenuItem item in SubItems)
                 {
-                    Console.WriteLine(String.Format("{0}. {1}", item.Index, item.Title));
+                    Console.WriteLine(String.Format("{0} -> {1}", item.Index, item.Title));
                 }
 
-                Console.WriteLine(String.Format("Please enter your choice (1-{0} or 0 to exit)", SubItems.Count));
+                Console.WriteLine(String.Format("Please enter your choice (1-{0} or 0 to exit)", (SubItems.Count - 1)));
                 userInput = getUserInput();
-
                 stepInto(userInput);
             }
-
         }
 
         public void Select()
@@ -55,7 +51,7 @@ namespace Ex04.Menus.Interfaces
         {
             this.Title = i_Title;
             this.Index = i_Index;
-            SubItems = new List<IMenuItem>();
+            this.SubItems = new List<IMenuItem>();
         }
 
         protected void stepInto(int i_Index)
@@ -63,7 +59,7 @@ namespace Ex04.Menus.Interfaces
             SubItems.Find(item => item.Index == i_Index).Select();
         }
 
-        protected int getUserInput()
+        private int getUserInput()
         {
             string userInput = Console.ReadLine();
             int o_userInputAsIntegar;
@@ -74,14 +70,11 @@ namespace Ex04.Menus.Interfaces
                 userInput = Console.ReadLine();
             }
 
-            //TODO : Handle Back.
             return (o_userInputAsIntegar);
         }
-
-        protected bool isUserInputValid(int i_UserInput)
+        private bool isUserInputValid(int i_UserInput)
         {
             return i_UserInput >= 0 && i_UserInput <= (SubItems.Count - 1);
         }
-
     }
 }

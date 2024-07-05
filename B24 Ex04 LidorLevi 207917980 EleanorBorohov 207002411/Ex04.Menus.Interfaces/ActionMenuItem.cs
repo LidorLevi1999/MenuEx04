@@ -6,16 +6,14 @@ namespace Ex04.Menus.Interfaces
     public class ActionMenuItem : IMenuItem
     {
         public string Title { get; private set; }
-
         public int Index { get; private set; }
-
         public List<IActionItem> Listeners { get; private set; }
-
         public void Select()
         {
             foreach (IActionItem listener in Listeners)
             {
                 listener.Execute();
+                System.Console.WriteLine();
             }
         }
 

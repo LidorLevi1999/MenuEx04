@@ -1,17 +1,21 @@
-﻿using System;
-
-namespace Ex04.Menus.Events
+﻿namespace Ex04.Menus.Events
 {
-    public class MainMenu
+    public class MainMenu : SubMenuItem
     {
-        public MainMenu()
-        {
+        private const int k_Index = -1;
+        public bool IsMenuPresented { get; set; }
 
+        public MainMenu(string title) : base(title, k_Index)
+        {
         }
 
         public void Show()
         {
-
+            IsMenuPresented = true;
+            while(IsMenuPresented)
+            {
+                base.Select();
+            }
         }
     }
 }

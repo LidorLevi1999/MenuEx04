@@ -3,7 +3,7 @@ using Ex04.Menus.Interfaces.Interfaces;
 
 namespace Ex04.Menus.Test.TestInterfaces
 {
-    public class TestExitMenu : IActionItem
+    internal class TestExitMenu : IActionItem
     {
         MainMenu m_MainMenu;
 
@@ -11,9 +11,10 @@ namespace Ex04.Menus.Test.TestInterfaces
         {
             m_MainMenu = i_MainMenu;
         }
+
         public void Execute()
         {
-            m_MainMenu.isMenuRunning = false;
+            m_MainMenu.IsMenuPresented = false;
         }
     }
 }

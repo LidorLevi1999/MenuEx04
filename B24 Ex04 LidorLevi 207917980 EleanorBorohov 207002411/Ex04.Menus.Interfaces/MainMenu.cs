@@ -2,21 +2,18 @@
 {
     public class MainMenu : SubMenuItem
     {
-        public int Index { get; private set; }
-
-        public bool isMenuRunning { get; set; }
-
-        public MainMenu(string i_Title) : base(i_Title, 0)
+        private const int k_Index = -1; 
+        public bool IsMenuPresented { get; set; }
+        public MainMenu(string i_Title) : base(i_Title, k_Index)
         {
-
         }
+
         public void Show()
         {
-            isMenuRunning = true;
-
-            while(isMenuRunning)
+            IsMenuPresented = true;
+            while(IsMenuPresented)
             {
-                base.Select();
+                Select();
             }
         }
     }

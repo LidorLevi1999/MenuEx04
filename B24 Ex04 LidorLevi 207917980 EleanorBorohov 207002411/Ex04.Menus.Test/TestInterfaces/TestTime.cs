@@ -1,9 +1,5 @@
 ﻿using Ex04.Menus.Interfaces.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test.TestInterfaces
 {
@@ -12,8 +8,9 @@ namespace Ex04.Menus.Test.TestInterfaces
         public void Execute()
         {
             DateTime now = DateTime.Now;
+            string formattedTime = now.ToString("HH:mm:ss");
 
-            Console.WriteLine("Current Hour: " + now.Hour);
+            Console.WriteLine("The hour is " + formattedTime);
         }
     }
 }
