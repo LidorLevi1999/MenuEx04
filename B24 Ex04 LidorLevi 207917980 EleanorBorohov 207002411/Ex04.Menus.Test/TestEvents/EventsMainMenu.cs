@@ -19,14 +19,14 @@ namespace Ex04.Menus.Test.TestEvents
             MenuItem timeMenuItem = new MenuItem("Current Time", 2);
 
             MainMenu = new Events.MainMenu(k_Title);
-            exitMenuItem.MenuItemSelected += exitMenu;
-            versionMenuItem.MenuItemSelected += testVersion;
-            capitalsMenuItem.MenuItemSelected += testCapitals;
+            exitMenuItem.MenuItemSelected += exitMenu_Selected;
+            versionMenuItem.MenuItemSelected += testShowVersion_Selected;
+            capitalsMenuItem.MenuItemSelected += testCountCapitals_Selected;
             versionAndCapitalsMenuItem.AddSubMenuItem(versionMenuItem);
             versionAndCapitalsMenuItem.AddSubMenuItem(capitalsMenuItem);
             versionAndCapitalsMenuItem.AddSubMenuItem(backMenuItem);
-            dateMenuItem.MenuItemSelected += testDate;
-            timeMenuItem.MenuItemSelected += testTime;
+            dateMenuItem.MenuItemSelected += testShowDate_Selected;
+            timeMenuItem.MenuItemSelected += testShowTime_Selected;
             dateAndTimeMenuItem.AddSubMenuItem(dateMenuItem);
             dateAndTimeMenuItem.AddSubMenuItem(timeMenuItem);
             dateAndTimeMenuItem.AddSubMenuItem(backMenuItem);
@@ -35,13 +35,13 @@ namespace Ex04.Menus.Test.TestEvents
             MainMenu.AddSubMenuItem(exitMenuItem);
         }
 
-        private void testVersion() 
+        private void testShowVersion_Selected() 
         {
             Console.WriteLine("App Version: 24.2.4.9504");
             Console.WriteLine();
         }
 
-        private void testCapitals()
+        private void testCountCapitals_Selected()
         {
             string userInput;
             int amountOfCapitals = 0;
@@ -60,7 +60,7 @@ namespace Ex04.Menus.Test.TestEvents
             Console.WriteLine();
         }
 
-        private void testDate()
+        private void testShowDate_Selected()
         {
             DateTime now = DateTime.Now;
 
@@ -68,7 +68,7 @@ namespace Ex04.Menus.Test.TestEvents
             Console.WriteLine();
         }
 
-        private void testTime()
+        private void testShowTime_Selected()
         {
             DateTime now = DateTime.Now;
             string formattedTime = now.ToString("HH:mm:ss");
@@ -78,7 +78,7 @@ namespace Ex04.Menus.Test.TestEvents
 
         }
 
-        private void exitMenu()
+        private void exitMenu_Selected()
         {
             MainMenu.IsMenuPresented = false;
         }
